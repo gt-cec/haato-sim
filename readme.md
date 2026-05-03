@@ -13,8 +13,6 @@ The current codebase includes multiple aerial teaming missions. **Fire Scouting*
 
 HAATO was developed by Ryan Bowers and David Feder at the Georgia Institute of Technology.
 
-![HAATO Overview](docs/haato_overview.png)
-
 ## What Is Included
 
 - A working collaborative aerial firefighting mission for X-Plane 12, configured for one human pilot and one AI wingman agent.
