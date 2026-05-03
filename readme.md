@@ -1,5 +1,5 @@
 <!-- Project Badges -->
-![GitHub Stars](https://img.shields.io/github/stars/ryanbowers166/haato.svg)
+![GitHub Stars](https://img.shields.io/github/stars/gt-cec/haato-sim.svg)
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 [![arXiv](https://img.shields.io/badge/arXiv-TBD-bbbbbb.svg)](#citation)
 
