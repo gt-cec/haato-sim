@@ -1,5 +1,4 @@
 <!-- Project Badges -->
-[![Downloads](https://pepy.tech/badge/haato)](https://pepy.tech/project/haato)
 ![GitHub Stars](https://img.shields.io/github/stars/ryanbowers166/haato.svg)
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 [![arXiv](https://img.shields.io/badge/arXiv-TBD-bbbbbb.svg)](#citation)
