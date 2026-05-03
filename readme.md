@@ -17,9 +17,9 @@ HAATO was developed by Ryan Bowers and David Feder at the Georgia Institute of T
 
 ## What Is Included
 
-- A runnable Fire Scouting mission for X-Plane 12.
-- A rule-based AI wingman with multiple initiative levels.
-- Python base classes for building new missions and wingman agents.
+- A working collaborative aerial firefighting mission for X-Plane 12, configured for one human pilot and one AI wingman agent.
+- A rule-based AI wingman for that mission, with multiple initiative levels (used in the paper at the bottom of this repo)
+- Python base classes for building new missions and agents.
 - X-Plane plugin assets for custom datarefs, cockpit displays, fire visuals, sounds, and joystick controls.
 - Telemetry, message, event, crash-recovery, and analysis utilities.
 - Simulated-X-Plane modes and tests for development without a live simulator.
