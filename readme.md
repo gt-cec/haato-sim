@@ -9,7 +9,7 @@
 
 Human-AI Aerial Teaming Operations (HAATO) is an open-source research testbed for studying human-AI teamwork in simulated aerial missions. It connects Python mission logic, AI wingman policies, custom X-Plane 12 plugins, cockpit displays, voice/joystick interaction, and telemetry logging into a reusable experimental framework.
 
-The current codebase includes multiple aerial teaming missions. **Fire Scouting** is the most mature and thoroughly tested mission because it has been used for the main HAATO experiment, while the Recon Race and ISR Patrol missions are intended to be usable starting points that may need additional validation or refinement for a new study.
+The current codebase includes multiple aerial teaming missions. **Aerial Firefighting** is the most mature and thoroughly tested mission because it has been used for the main HAATO experiment, while the Recon Race and ISR Patrol missions are intended to be usable starting points that may need additional validation or refinement for a new study.
 
 HAATO was developed by Ryan Bowers and David Feder at the Georgia Institute of Technology.
 
@@ -136,28 +136,23 @@ classDiagram
 - X-Plane 12.
 - XPPython3 4.6.1 or newer.
 - FlyWithLua for X-Plane 12.
-- Python packages from `requirements.txt`:
-  - `numpy`
-  - `PyYAML`
-
-Optional voice features use additional speech/TTS dependencies. The core mission and tests do not require those modules.
+- Python packages from `requirements.txt`
 
 ## Repository Layout
 
 ```text
 haato-sim/
-|-- run_mission.py                  # Main Fire Scouting experiment entry point
-|-- run_preflight_planning.py        # Preflight planning utility
+|-- run_mission.py                  # Main Aerial Firefighting experiment entry point
 |-- requirements.txt
 |-- missions/
-|   |-- fire/                        # Current Fire Scouting implementation
+|   |-- fire/                        # Current Aerial Firefighting implementation
 |   |-- fire_mm.py                   # Compatibility re-export
 |   |-- fire_wingman.py              # Compatibility re-export
 |   |-- recon_mm.py                  # Competitive recon mission
 |   |-- patrol_mm.py                 # Collaborative patrol mission
 |   `-- agents.py                    # Reusable baseline wingman agents
 |-- utility/                         # Base classes, X-Plane IO, logging, voice, GUI
-|-- Copy to X-Plane directory/       # Files to merge into an X-Plane install
+|-- Copy to X-Plane directory/       # Files to merge into your X-Plane install
 |-- tests/                           # pytest suite with fake/simulated X-Plane helpers
 |-- data_analysis/                   # Playback and post-analysis tools
 |-- docs/                            # Architecture and development documentation
@@ -169,8 +164,8 @@ haato-sim/
 ### 1. Install HAATO and Python dependencies
 
 ```bash
-git clone https://github.com/ryanbowers166/haato.git
-cd haato
+git clone https://github.com/gt-cec/haato-sim.git
+cd haato-sim
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
@@ -211,15 +206,17 @@ Included configs:
 
 For a new joystick, copy an existing config to `joystick_<short-name>.yaml` and update the button IDs. In X-Plane, button IDs can be inspected from `Plugins -> FlyWithLua -> FlyWithLua macros -> Show joystick button numbers`. See `docs/JOYSTICK_SETUP.md` for the full workflow and required button names.
 
-### 5. Run Fire Scouting
+### 5. Run the Aerial Firefighting Mission
 
 Start X-Plane 12, load a flight at Skykomish State Airport, and use an aircraft with at least two G1000 cockpit instruments, such as the Cirrus Vision or Lancair Evolution.
 
 Run a normal mission:
 
 ```bash
-python run_mission.py -s <subject_id> -t <1|2|3> -c <logitech|thrustmaster|microsoft>
+python run_mission.py --subject_id <subject_id> --trial <1|2|3> --control_prefix <logitech|thrustmaster|microsoft>
 ```
+
+Supported control prefixes are for the Logitech Extreme 3D ('logitech'), Thrustmaster Warthog ('thrustmaster'), and Microsoft Sidewinder ('microsoft'). New joystick configs can be created as needed.
 
 Run a practice mission:
 
@@ -239,19 +236,11 @@ Resume from the latest crash-recovery state:
 python run_mission.py -s <subject_id> -t <trial> -c logitech --resume
 ```
 
-Run wingman testing mode:
-
-```bash
-python run_mission.py -s 99 -t 1 -c logitech --testing_wingman
-```
-
 After the mission starts, refresh XPPython3 from the X-Plane plugins menu so the cockpit instruments resync with the Python mission manager. Press `Z` to dismiss the intro screen on the left cockpit display.
 
-## Fire Scouting Mission
+## Aerial Firefighting Mission
 
-Fire Scouting is a 30-minute collaborative aerial firefighting mission. The human pilot and AI wingman coordinate over up to eight fire targets. Targets progress through mission states such as unknown, spotted, in progress, and handled.
-
-This is the most robust HAATO mission today: it has received the most implementation work, has the most test coverage, and was the mission used for the main experiment. The implementation still uses `FireWatch` in several internal class and module names for compatibility.
+This is a 30-minute collaborative aerial firefighting mission included with the HAATO release. The human pilot and AI wingman coordinate over up to eight fire targets. Targets progress through mission states such as unknown, spotted, in progress, and handled. This is the most robust HAATO mission today: it has received the most implementation work, has the most test coverage, and was the mission used for the first research publication using the HAATO framework. 
 
 The AI initiative level changes how much autonomy the wingman exercises:
 
@@ -265,13 +254,13 @@ Mission layouts, spawn points, target positions, fire classifications, dynamic f
 
 ## Mission Library and Agents
 
-HAATO also includes other usable mission and agent implementations. These are part of the framework, but they have not been exercised as heavily as Fire Scouting in live experimental runs, so new studies should validate them against their own protocol before collecting data.
+HAATO also includes other usable mission and agent implementations. These are part of the framework, but they have not been exercised as heavily as Aerial Firefighting in live experimental runs, so new studies should validate them against their own protocol before collecting data.
 
 | Component | File | Status |
 |-----------|------|--------|
-| Fire Scouting | `missions/fire/` | Most mature and experimentally validated mission. |
-| Recon Race | `missions/recon_mm.py` | Usable competitive mission; less tested/refined than Fire Scouting. |
-| ISR Patrol | `missions/patrol_mm.py` | Usable collaborative patrol mission; less tested/refined than Fire Scouting. |
+| Aerial Firefighting | `missions/fire/` | Most mature and experimentally validated mission. |
+| Recon Race | `missions/recon_mm.py` | Usable competitive mission; less tested/refined than Aerial Firefighting. |
+| ISR Patrol | `missions/patrol_mm.py` | Usable collaborative patrol mission; less tested/refined than Aerial Firefighting. |
 | Baseline agents | `missions/agents.py` | Passive, greedy, random, and policy-table wingman examples. |
 | Search mission example | `examples/search_mission_example.py` | Example extension scaffold. |
 
@@ -321,18 +310,17 @@ To add cockpit or joystick behavior:
 
 ## Documentation
 
-- `CLAUDE.md` contains a concise codebase guide for AI coding assistants and maintainers.
 - `docs/ARCHITECTURE.md` provides the maintained architecture reference.
 - `docs/JOYSTICK_SETUP.md` explains how to configure new joysticks.
 - `docs/DATA_POLICY.md` and `docs/RELEASE_CHECKLIST.md` cover public-release hygiene.
 - `docs/COMPREHENSIVE_GUIDE.md` is archival and may lag behind the current refactored `missions/fire/` package.
 - `dev/` contains refactor notes and cleanup recommendations intended for maintainers.
 
-When in doubt, prefer the current Python implementation over older prose documentation.
-
 ## Citation
 
-Citation metadata is provided in `CITATION.cff`. If you use HAATO in research before a formal paper citation is published, please contact the maintainers for the preferred citation format.
+If you use HAATO in your research, please cite this paper:
+
+(TODO)
 
 ## License
 
