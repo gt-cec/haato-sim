@@ -1,0 +1,22 @@
+/.idea
+/.claude
+/logs
+/.venv
+/.pytest_cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+
+# Local run outputs
+/experiment_data/
+/dev/plans/
+/tests/wingman_plan_test_results/
+saved_recordings_backup.json
+crash_recovery_*.json
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+/dev
+/docs_for_review

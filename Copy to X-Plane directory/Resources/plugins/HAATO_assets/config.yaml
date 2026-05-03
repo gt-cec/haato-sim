@@ -1,0 +1,294 @@
+# =============================================================================
+# HAATO Simulation Configuration
+# Single source of truth for all tunable parameters.
+# Replaces fire_targets_mission{1-5}.json and hardcoded values throughout
+# the codebase.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Mission layout data (replaces fire_targets_mission{1-5}.json)
+# Each key is the integer fire_layout value used at runtime (1-3 = experiment,
+# 4-5 = practice). image_path / image_res are used by the X-Plane plugin only.
+# ---------------------------------------------------------------------------
+missions:
+  # ---------------------------------------------------------------------------
+  # Missions 1-3 use the new schema:
+  #   fires:           true (physics) positions for the server
+  #   fires_reported:  positions shown on MFD at mission start (may differ from true)
+  #                    Fires omitted here are UNKNOWN — not shown until discovered
+  #   dynamic_events:  fires that spawn mid-mission at trigger_time_s
+  #                    Omit reported_latitude/longitude/altitude to spawn as UNKNOWN
+  #
+  # Missions 4-5 (practice) use the legacy data_points schema for backward compat.
+  # ---------------------------------------------------------------------------
+  1:
+    notes: "Mission 1"
+    wind_direction: 150.0
+    magnetic_declination: 15.0
+    required_altitude_ft_msl: 7000.0
+    required_drop_route_length: 2.0
+    required_altitude_fire_agl_ft: 1000.0
+    human_start_lla: [47.71044513620272, -121.34287916904042, 1600.319856278361]
+    human_start_spd: 200
+    human_start_hdg: 90
+    agent_start_lla: [47.71044513620272, -121.32287916904042, 2333.33333333]
+    wingman_active: true
+
+    # True fire positions (server physics / 3-D placement). id is explicit.
+    fires:
+      - {id: 0, latitude: 47.9748,      longitude: -121.258566,    altitude: 1500.2, type: moderate, image_path: fire_moderate_1.jpg, image_res: [620,  465]}
+      - {id: 1, latitude: 47.76563325,  longitude: -121.318566,    altitude:  400.2, type: severe,   image_path: fire_severe_1.jpg,   image_res: [1024, 1024]}
+      - {id: 2, latitude: 47.8364665,   longitude: -121.318566,    altitude:  800.7, type: moderate, image_path: fire_moderate_2.jpg, image_res: [507,  379]}
+      - {id: 3, latitude: 47.8964665,   longitude: -121.21332825,  altitude: 1000.0, type: severe,   image_path: fire_severe_2.jpg,   image_res: [1024, 1024]}
+      - {id: 4, latitude: 47.75563325,  longitude: -121.21332825,  altitude: 1300.9, type: moderate, image_path: fire_moderate_3.jpg, image_res: [918,  682]}
+      - {id: 5, latitude: 47.76223325,  longitude: -121.1080905,   altitude: 1500.2, type: severe,   image_path: fire_severe_3.jpg,   image_res: [374,  263]}
+      - {id: 6, latitude: 47.90729975,  longitude: -121.00285275,  altitude: 1300.8, type: moderate, image_path: fire_moderate_4.jpg, image_res: [1000, 666]}
+      - {id: 7, latitude: 47.962133,    longitude: -120.980285275, altitude: 1800.8, type: moderate, image_path: fire_moderate_1.jpg, image_res: [620,  465]}
+
+    # Reported positions shown on MFD at mission start.
+    # All fires are known with perfect information in this baseline config.
+    # Adjust positions or omit entries to introduce imperfect information.
+    fires_reported:
+      - {id: 0, latitude: 47.9748,      longitude: -121.258566,    altitude: 1500.2}
+      - {id: 1, latitude: 47.76563325,  longitude: -121.318566,    altitude:  400.2}
+      - {id: 2, latitude: 47.8364665,   longitude: -121.318566,    altitude:  800.7}
+      - {id: 3, latitude: 47.8964665,   longitude: -121.21332825,  altitude: 1000.0}
+      - {id: 4, latitude: 47.75563325,  longitude: -121.21332825,  altitude: 1300.9}
+      - {id: 5, latitude: 47.76223325,  longitude: -121.1080905,   altitude: 1500.2}
+      - {id: 6, latitude: 47.90729975,  longitude: -121.00285275,  altitude: 1300.8}
+      - {id: 7, latitude: 47.962133,    longitude: -120.980285275, altitude: 1800.8}
+
+    # Dynamic fire events (fires that spawn mid-mission).
+    # Empty by default — add entries to enable dynamic spawning.
+    dynamic_events: []
+
+  2:
+    notes: "Mission 2"
+    wind_direction: 80.0
+    magnetic_declination: 15.0
+    required_altitude_ft_msl: 7000.0
+    required_drop_route_length: 2.0
+    required_altitude_fire_agl_ft: 1000.0
+    human_start_lla: [47.71044513620272, -121.34287916904042, 1600.319856278361]
+    human_start_spd: 200
+    human_start_hdg: 90
+    agent_start_lla: [47.71044513620272, -121.32287916904042, 2333.33333333]
+    wingman_active: true
+
+    fires:
+      - {id: 0, latitude: 47.87597071,  longitude: -121.3080377,   altitude: 1004.8, type: moderate, image_path: fire_moderate_1.jpg, image_res: [620,  465]}
+      - {id: 1, latitude: 47.77272488,  longitude: -121.22460522,  altitude: 1306.3, type: severe,   image_path: fire_severe_1.jpg,   image_res: [1024, 1024]}
+      - {id: 2, latitude: 47.9034666,   longitude: -121.03370867,  altitude: 1349.5, type: moderate, image_path: fire_moderate_2.jpg, image_res: [507,  379]}
+      - {id: 3, latitude: 47.74758391,  longitude: -120.92196901,  altitude: 1750.0, type: severe,   image_path: fire_severe_2.jpg,   image_res: [1024, 1024]}
+      - {id: 4, latitude: 47.75674735,  longitude: -121.10583619,  altitude: 1617.2, type: moderate, image_path: fire_moderate_3.jpg, image_res: [918,  682]}
+      - {id: 5, latitude: 47.70231852,  longitude: -121.23486509,  altitude: 1027.9, type: severe,   image_path: fire_severe_3.jpg,   image_res: [374,  263]}
+      - {id: 6, latitude: 47.94601005,  longitude: -121.3080377,   altitude: 1306.8, type: moderate, image_path: fire_moderate_4.jpg, image_res: [1000, 666]}
+      - {id: 7, latitude: 47.83673111,  longitude: -121.03370867,  altitude: 1500.2, type: moderate, image_path: fire_moderate_1.jpg, image_res: [620,  465]}
+
+    fires_reported:
+      - {id: 0, latitude: 47.87597071,  longitude: -121.3080377,   altitude: 1004.8}
+      - {id: 1, latitude: 47.77272488,  longitude: -121.22460522,  altitude: 1306.3}
+      - {id: 2, latitude: 47.9034666,   longitude: -121.03370867,  altitude: 1349.5}
+      - {id: 3, latitude: 47.74758391,  longitude: -120.92196901,  altitude: 1750.0}
+      - {id: 4, latitude: 47.75674735,  longitude: -121.10583619,  altitude: 1617.2}
+      - {id: 5, latitude: 47.70231852,  longitude: -121.23486509,  altitude: 1027.9}
+      - {id: 6, latitude: 47.94601005,  longitude: -121.3080377,   altitude: 1306.8}
+      - {id: 7, latitude: 47.83673111,  longitude: -121.03370867,  altitude: 1500.2}
+
+    dynamic_events: []
+
+  3:
+    notes: "Mission 3"
+    wind_direction: 330.0
+    magnetic_declination: 15.0
+    required_altitude_ft_msl: 7000.0
+    required_drop_route_length: 2.0
+    required_altitude_fire_agl_ft: 1000.0
+    human_start_lla: [47.71044513620272, -121.34287916904042, 1600.319856278361]
+    human_start_spd: 200
+    human_start_hdg: 90
+    agent_start_lla: [47.71044513620272, -121.32287916904042, 2333.33333333]
+    wingman_active: true
+
+    fires:
+      - {id: 0, latitude: 47.80205128,  longitude: -121.08618394,  altitude: 1445.6, type: moderate, image_path: fire_moderate_1.jpg, image_res: [620,  465]}
+      - {id: 1, latitude: 47.82205128,  longitude: -121.25505337,  altitude:  950.2, type: severe,   image_path: fire_severe_1.jpg,   image_res: [1024, 1024]}
+      - {id: 2, latitude: 47.89442845,  longitude: -121.29927618,  altitude:  849.7, type: moderate, image_path: fire_moderate_2.jpg, image_res: [507,  379]}
+      - {id: 3, latitude: 47.7593711,   longitude: -121.19674785,  altitude: 1464.4, type: severe,   image_path: fire_severe_2.jpg,   image_res: [1024, 1024]}
+      - {id: 4, latitude: 47.87491038,  longitude: -121.16498953,  altitude: 1390.9, type: moderate, image_path: fire_moderate_3.jpg, image_res: [918,  682]}
+      - {id: 5, latitude: 47.75044363,  longitude: -121.08618394,  altitude: 1250.2, type: severe,   image_path: fire_severe_3.jpg,   image_res: [374,  263]}
+      - {id: 6, latitude: 47.75969688,  longitude: -121.30505337,  altitude:  555.8, type: moderate, image_path: fire_moderate_4.jpg, image_res: [1000, 666]}
+      - {id: 7, latitude: 47.94310387,  longitude: -121.18610203,  altitude: 1248.8, type: moderate, image_path: fire_moderate_1.jpg, image_res: [620,  465]}
+
+    fires_reported:
+      - {id: 0, latitude: 47.80205128,  longitude: -121.08618394,  altitude: 1445.6}
+      - {id: 1, latitude: 47.82205128,  longitude: -121.25505337,  altitude:  950.2}
+      - {id: 2, latitude: 47.89442845,  longitude: -121.29927618,  altitude:  849.7}
+      - {id: 3, latitude: 47.7593711,   longitude: -121.19674785,  altitude: 1464.4}
+      - {id: 4, latitude: 47.87491038,  longitude: -121.16498953,  altitude: 1390.9}
+      - {id: 5, latitude: 47.75044363,  longitude: -121.08618394,  altitude: 1250.2}
+      - {id: 6, latitude: 47.75969688,  longitude: -121.30505337,  altitude:  555.8}
+      - {id: 7, latitude: 47.94310387,  longitude: -121.18610203,  altitude: 1248.8}
+
+    dynamic_events: []
+
+  4:
+    notes: "Practice 1 - on runway, low initiative, 2 fires to classify"
+    wind_direction: 90.0
+    magnetic_declination: 15.0
+    required_altitude_ft_msl: 7000.0
+    required_drop_route_length: 2.0
+    required_altitude_fire_agl_ft: 1000.0
+    human_start_lla: [47.71044513620272, -121.34287916904042, 299.319856278361]
+    human_start_spd: 0
+    human_start_hdg: 75
+    agent_start_lla: [47.71044513620272, -121.32287916904042, 2333.33333333]
+    wingman_active: false
+    data_points:
+      - {latitude: 47.76563325,  longitude: -121.318566,    altitude:  400.2, type: severe,   image_path: fire_severe_1.jpg,   image_res: [1024, 1024]}
+      - {latitude: 47.76563325,  longitude: -121.187566,    altitude: 1500.2, type: severe,   image_path: fire_severe_2.jpg,   image_res: [1024, 1024]}
+
+  5:
+    notes: "Practice 2 - in air, high initiative, learning wingman comms"
+    wind_direction: 150.0
+    magnetic_declination: 15.0
+    required_altitude_ft_msl: 7000.0
+    required_drop_route_length: 2.0
+    required_altitude_fire_agl_ft: 1000.0
+    human_start_lla: [47.92979771, -120.92428031, 2000.319856278361]
+    human_start_spd: 200
+    human_start_hdg: 90
+    agent_start_lla: [47.85205128, -121.19674785, 2333.33333333]
+    wingman_active: true
+    data_points:
+      - {latitude: 47.89442845,  longitude: -121.29927618,  altitude:  849.7, type: moderate, image_path: fire_moderate_2.jpg, image_res: [507,  379]}
+      - {latitude: 47.89442845,  longitude: -120.92428031,  altitude: 1308.2, type: severe,   image_path: fire_severe_3.jpg,   image_res: [374,  263]}
+
+# ---------------------------------------------------------------------------
+# Parameters shared across all missions
+# ---------------------------------------------------------------------------
+mission_parameters:
+  max_mission_time_s: 1800              # 30-minute mission
+  visual_detection_range_nm: 2.0        # Range at which a fire becomes visually detectable
+  wingman_action_frequency: 1           # Recalculate wingman action every N timesteps
+  airport_elevation_m: 300              # Airfield elevation MSL in metres
+  airfield_lla: [47.71044513620272, -121.34287916904042, 299.319856278361]
+  aor_center: [47.836467, -121.108091]  # Centre lat/lon of the area of responsibility
+  aor_size_nm: 17                       # Side length of the square AoR in nautical miles
+
+# ---------------------------------------------------------------------------
+# Simulated aircraft flight model parameters
+# ---------------------------------------------------------------------------
+flight_model:
+  hdg_tolerance_deg: 5
+  spd_tolerance_kts: 5
+  alt_tolerance_m: 33
+  hdg_rate_deg_per_s: 24
+  spd_rate_kts_per_s: 3
+  alt_rate_m_per_s: 33
+  ai_default_spd_kts: 160
+  ai_start_hdg_deg: 150
+
+# ---------------------------------------------------------------------------
+# Wingman agent behaviour
+# ---------------------------------------------------------------------------
+wingman:
+  # Scoring weights
+  utility_weight: 1.0
+  distance_weight: 0.3
+  # Late-game behaviour
+  late_game_threshold_minutes: 10.0
+  proximity_threshold_nm: 5.0
+  proximity_bonus: 2.0
+  # Lookahead planning
+  lookahead_depth: 2
+  lookahead_discount: 0.7
+  max_planning_time_s: 6.0
+  avg_cruise_speed_kts: 120.0
+  # Navigation tolerances
+  target_lock_distance_nm: 0.1
+  overfly_tolerance_nm: 0.3
+  route_waypoint_tolerance_nm: 0.5
+
+# ---------------------------------------------------------------------------
+# X-Plane plugin parameters
+# ---------------------------------------------------------------------------
+plugin:
+  range_to_classify_nm: 1.0            # Human must be within this range to classify a fire
+  range_to_overfly_nm: 0.7             # Human must be within this range during position overfly
+  classify_agent_time_limit_s: 15      # Seconds before agent auto-classifies if human does not
+  aor_sw: [47.694800, -121.318566]     # Grid south-west corner [lat, lon]
+  aor_ne: [47.978133, -120.897615]     # Grid north-east corner [lat, lon]
+  g1000_range_steps_nm: [0.5, 1, 1.5, 2, 3, 5, 8, 10, 15, 20, 30, 50, 80, 100, 150]
+
+# ---------------------------------------------------------------------------
+# Network / connectivity
+# ---------------------------------------------------------------------------
+network:
+  xplane_ip: "127.0.0.1"
+  xplane_port: 49000
+  haato_udp_send_port: 48100           # Python side sends on this port (plugin receives)
+  haato_udp_recv_port: 48200           # Python side receives on this port (plugin sends)
+
+# ---------------------------------------------------------------------------
+# Experiment design (Latin square)
+# subject_group is derived as ((subject_id - 1) % 9) + 1;
+# subject IDs 99 and 97 use group 99.
+# ---------------------------------------------------------------------------
+experiment:
+  practice_configs:
+    - {initiative_level: low,  fire_layout: 4}
+    - {initiative_level: high, fire_layout: 5}
+  configs:
+    99:
+      - {initiative_level: high,   fire_layout: 1}
+      - {initiative_level: low,    fire_layout: 2}
+      - {initiative_level: medium, fire_layout: 3}
+    1:
+      - {initiative_level: low,    fire_layout: 1}
+      - {initiative_level: medium, fire_layout: 2}
+      - {initiative_level: high,   fire_layout: 3}
+    2:
+      - {initiative_level: low,    fire_layout: 2}
+      - {initiative_level: medium, fire_layout: 3}
+      - {initiative_level: high,   fire_layout: 1}
+    3:
+      - {initiative_level: low,    fire_layout: 3}
+      - {initiative_level: medium, fire_layout: 1}
+      - {initiative_level: high,   fire_layout: 2}
+    4:
+      - {initiative_level: medium, fire_layout: 1}
+      - {initiative_level: high,   fire_layout: 2}
+      - {initiative_level: low,    fire_layout: 3}
+    5:
+      - {initiative_level: medium, fire_layout: 2}
+      - {initiative_level: high,   fire_layout: 3}
+      - {initiative_level: low,    fire_layout: 1}
+    6:
+      - {initiative_level: medium, fire_layout: 3}
+      - {initiative_level: high,   fire_layout: 1}
+      - {initiative_level: low,    fire_layout: 2}
+    7:
+      - {initiative_level: high,   fire_layout: 1}
+      - {initiative_level: low,    fire_layout: 2}
+      - {initiative_level: medium, fire_layout: 3}
+    8:
+      - {initiative_level: high,   fire_layout: 2}
+      - {initiative_level: low,    fire_layout: 3}
+      - {initiative_level: medium, fire_layout: 1}
+    9:
+      - {initiative_level: high,   fire_layout: 3}
+      - {initiative_level: low,    fire_layout: 1}
+      - {initiative_level: medium, fire_layout: 2}
+  initiative_level_map:
+    low: 0.0
+    medium: 1.0
+    high: 2.0
+
+# ---------------------------------------------------------------------------
+# System / simulation loop
+# ---------------------------------------------------------------------------
+system:
+  target_fps: 30
+  crash_save_interval_steps: 10
+  default_log_hz: 1.0

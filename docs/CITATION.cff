@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: HAATO
+message: "If you use HAATO in research, please cite this software."
+type: software
+authors:
+  - family-names: Bowers
+    given-names: Ryan
+  - family-names: Feder
+    given-names: David
+repository-code: "https://github.com/ryanbowers166/haato"
+license: MIT
+abstract: "Human-AI Aerial Teaming Operations is a research testbed for studying human-AI teamwork in simulated aerial missions."
+keywords:
+  - human-ai teaming
+  - x-plane
+  - simulation
+  - aviation
+  - research testbed

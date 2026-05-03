@@ -1,0 +1,6 @@
+A
+800
+LIBRARY
+
+EXPORT haato/smoke_fire_emitter_moderate.obj objects/smoke_fire_emitter_moderate.obj
+EXPORT haato/smoke_fire_emitter_severe.obj objects/smoke_fire_emitter_severe.obj

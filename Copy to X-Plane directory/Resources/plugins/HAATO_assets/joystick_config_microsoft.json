@@ -1,0 +1,32 @@
+{
+  "mic_key": 1,
+  "navigation": {
+    "up": 328,
+    "down": 332,
+    "left": 334,
+    "right": 330,
+    "select": 320,
+    "dpad_name": "STICK DPAD",
+    "select_button_name": "TRIGGER"
+  },
+  "screen_shortcuts": {
+    "primary": 327,
+    "commands": 999,
+    "human_plan": 999,
+    "developer": 999,
+    "control_reference": 999
+  },
+  "global_actions": {
+    "record": 322,
+    "auto_spot_toggle": 999,
+    "map_zoom_in": 326,
+    "map_zoom_out": 325,
+    "delete": 999,
+    "escape": 321,
+    "change_control_config": 999,
+    "query_wingman_status":323,
+    "map_zoom_in_correction": 170,
+    "map_zoom_out_correction": 172,
+    "enable_autopilot": 999
+  }
+}

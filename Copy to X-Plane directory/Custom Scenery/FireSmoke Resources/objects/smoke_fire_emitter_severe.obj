@@ -1,0 +1,54 @@
+A
+800
+OBJ
+
+# X-Plane 12 Fire Object with Particle System
+# This creates a persistent fire effect at a specific location
+
+# Reference the particle system file
+PARTICLE_SYSTEM smoke_fire_effects_severe.pss
+
+# Simple invisible geometry as base (required for emitter attachment)
+# Using the most basic possible setup
+
+POINT_COUNTS 3 0 0 3
+
+# Define 3 vertices for a minimal triangle
+VT    0.0   0.0   0.0    0.0  1.0  0.0   0.0  0.0
+VT    1.0   0.0   0.0    0.0  1.0  0.0   1.0  0.0
+VT    0.5   0.0   1.0    0.0  1.0  0.0   0.5  1.0
+
+# Index for the triangle
+IDX 0
+IDX 1
+IDX 2
+
+# Main LOD
+LOD 0 10000
+
+# Make the geometry invisible
+ATTR_no_cull
+ATTR_no_blend
+
+# Draw the triangle (won't be visible, just provides structure)
+TRIS 0 3
+
+# Add the fire emitter at the origin
+# Format: EMITTER <name> <x> <y> <z> <index>
+EMITTER Persistent_Fire_Emitter 0.0 0.0 0.0 0
+EMITTER Persistent_Fire_Emitter 8.0 0.0 0.0 0
+EMITTER Persistent_Fire_Emitter -8.0 0.0 0.0 0
+EMITTER Persistent_Fire_Emitter 0.0 0.0 8.0 0
+EMITTER Persistent_Fire_Emitter 0.0 0.0 -8.0 0
+
+EMITTER Persistent_Fire_Emitter 0.0 40.0 0.0 0
+EMITTER Persistent_Fire_Emitter 8.0 40.0 0.0 0
+EMITTER Persistent_Fire_Emitter -8.0 40.0 0.0 0
+EMITTER Persistent_Fire_Emitter 0.0 40.0 8.0 0
+EMITTER Persistent_Fire_Emitter 0.0 40.0 -8.0 0
+
+EMITTER Persistent_Fire_Emitter 0.0 80.0 0.0 0
+EMITTER Persistent_Fire_Emitter 8.0 80.0 0.0 0
+EMITTER Persistent_Fire_Emitter -8.0 80.0 0.0 0
+EMITTER Persistent_Fire_Emitter 0.0 80.0 8.0 0
+EMITTER Persistent_Fire_Emitter 0.0 80.0 -8.0 0

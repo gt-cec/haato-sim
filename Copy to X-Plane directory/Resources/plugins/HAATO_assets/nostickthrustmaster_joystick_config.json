@@ -1,0 +1,30 @@
+{
+  "mic_key": 1,
+  "navigation": {
+    "up": 32,
+    "down": 36,
+    "left": 38,
+    "right": 34,
+    "select": 0,
+    "dpad_name": "DMS",
+    "select_button_name": "TRIGGER"
+  },
+  "screen_shortcuts": {
+    "primary": 14,
+    "commands": 38,
+    "human_plan": 34,
+    "developer": 25,
+    "control_reference": 8
+  },
+  "global_actions": {
+    "record": 116,
+    "toggle_recording_mode": 8,
+    "auto_spot_toggle": 11,
+    "map_zoom_in": 168,
+    "map_zoom_out": 166,
+    "delete": 6,
+    "escape": 14,
+    "change_control_config": 20,
+    "query_wingman_status":14
+  }
+}
