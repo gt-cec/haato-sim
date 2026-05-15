@@ -188,6 +188,10 @@ Important plugin assets include:
 - `Resources/plugins/HAATO_assets/config.yaml`
 - fire images, splash screens, and sound files in `Resources/plugins/HAATO_assets/`
 
+5. Add these two lines to /X-Plane 12/Custom Scenery/scenery_packs.ini:
+SCENERY_PACK Custom Scenery/FireSmoke Resources/
+SCENERY_PACK Custom Scenery/Skyomish Runway Fix/
+
 ### 3. Configure X-Plane networking
 
 In X-Plane, enable incoming network connections and UDP data output. HAATO expects local UDP communication with X-Plane, typically using `127.0.0.1`, and the standard XPlaneConnect-style ports configured by the simulator/plugin setup.
